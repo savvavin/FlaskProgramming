@@ -1,0 +1,16 @@
+body{
+    background-image: url("lion.jpg");
+
+}
+
+h2{
+    color: white;
+}
+
+p{
+    color: white;
+}
+
+#main{
+    margin-left: 100px;
+}

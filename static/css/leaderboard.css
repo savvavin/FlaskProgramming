@@ -1,0 +1,17 @@
+body{
+    background-image: url("leaderboard.jpg");
+
+    background-position: top;
+}
+.table{
+    border: 2px solid black;
+    margin-left: 400px;
+    margin-top: 30px;
+    margin-right: 400px;
+}
+
+#title{
+    margin-left: 550px;
+    margin-top: -10px;
+    color: #ffffff;
+}

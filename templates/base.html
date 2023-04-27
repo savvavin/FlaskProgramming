@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+</head>
+<body>
+<header>
+    <nav>
+        {% if current_user.is_authenticated %}
+        <a href="/user/{{ current_user.id }}">{{ current_user.name }}</a>
+
+
+        {% else %}
+        <p>
+            <a href="/register">Зарегистрироваться</a>
+            <a href="/login">Войти</a>
+        </p>
+
+        {% endif %}
+        <a href="/">Главная страница</a>
+        <a href="/solutions">Решения</a>
+    </nav>
+</header>
+<!-- Begin page content -->
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Задачи</h1>
+<a href="/add_task">Добавить задачу</a>
+{% for item in tasks %}
+<div>
+    <h2>{{item.id}}. {{item.title}}</h2>
+    <div>
+        Автор - {{item.user.name}}, Дата написания - {{item.created_date}}
+    </div>
+    {% if current_user.is_authenticated %}
+    <div>
+        <a href="/tasks/{{ item.id }}">
+            Открыть
+        </a>
+        <a href="/edit_task/{{ item.id }}">
+            Редактировать
+        </a>
+        <a href="/tasks_delete/{{ item.id }}">
+            Удалить
+        </a>
+    </div>
+{% endif %}
+</div>
+{% endfor %}
+{% endblock %}

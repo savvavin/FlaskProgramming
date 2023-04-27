@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link href = "/static/css/contests.css" rel = "stylesheet" type="text/css" media="all">
+    <title>{{title}}</title>
+</head>
+<body>
+<header>
+    <nav>
+        {% if current_user.is_authenticated %}
+        <a style="color: white; text-decoration: none; font-size: 20px" href="/user/{{ current_user.id }}">{{ current_user.name }}</a>
+        {% else %}
+        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/register">Зарегистрироваться</a>
+        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/login">Войти</a>
+        {% endif %}
+        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/">Главная страница</a>
+        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/solutions">Решения</a>
+        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/logout">Выйти</a>
+    </nav>
+</header>
+<h1 style="color: white; margin-left: 100px">Контесты</h1>
+<a style="margin-left: 100px" href="/add_contest">Добавить контест</a>
+{% for item in contests %}
+<div id="main">
+    <h2>{{item.id}}. {{item.title}}</h2>
+    <div>
+        <p>Дата создания - {{item.created_date}}</p>
+    </div>
+    {% if current_user.is_authenticated %}
+    <div>
+        <a href="/contests/{{ item.id }}">
+            Открыть
+        </a>
+        <a href="/edit_contest/{{ item.id }}">
+            Редактировать
+        </a>
+        <a href="/contests_delete/{{ item.id }}">
+            Удалить
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endfor %}
+</body>
+</html>

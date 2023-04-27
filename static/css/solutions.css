@@ -1,0 +1,23 @@
+body{
+    background-image: url("matrix.jpg");
+
+}
+
+h1{
+    margin-top: 50px;
+    color: white;
+}
+
+h2{
+    margin-top: 50px;
+    color: white;
+}
+
+p{
+    color: white;
+}
+
+#main{
+    margin-top: 50px;
+    margin-left: 100px;
+}

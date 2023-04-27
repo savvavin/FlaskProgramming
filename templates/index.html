@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link href = "/static/css/styles.css" rel = "stylesheet" type="text/css" media="all">
+    <title>{{title}}</title>
+</head>
+<body>
+	<header>
+    	<nav>
+        {% if current_user.is_authenticated %}
+        <a style="color: white; text-decoration: none; font-size: 25px" href="/user/{{ current_user.id }}">{{ current_user.name }}</a>
+        {% endif %}
+        <a style="color: white; text-decoration: none; font-size: 25px; margin-left: 10px" href="/solutions">Решения</a>
+        {% if current_user.is_authenticated %}
+        <a style="color: white; text-decoration: none; font-size: 25px; margin-left: 10px" href="/logout">Выйти</a>
+        {% endif %}
+    </nav>
+	</header>
+
+	<h1 style="color: white; margin-top: 10px; margin-left: 500px">Главная страница</h1>
+    <div id="login"><a style="font-size: 22px; text-decoration: none; color: black; font-weight: bold" href="{{ url_for('login') }}">ВОЙТИ</a></div>
+    <div id="contests"><a style="font-size: 17px; text-decoration: none; color: black; font-weight: bold" href="{{ url_for('contests') }}">КОНТЕСТЫ</a></div>
+    <div id="register"><a style="font-size: 33px; text-decoration: none; color: black; font-weight: bold" href="{{ url_for('register') }}">ЗАРЕГИСТРИРОВАТЬСЯ</a></div>
+    <div id="leaderboard"><a style="font-size: 16px; text-decoration: none; color: black; font-weight: bold" href="{{ url_for('leaderboard') }}">ТАБЛИЦА ЛИДЕРОВ</a></div>
+    <div id="logout"><a style="font-size: 28px; text-decoration: none; color: black; font-weight: bold" href="{{ url_for('logout') }}">ВЫЙТИ</a></div>
+
+
+</body>
+</html>

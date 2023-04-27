@@ -1,0 +1,31 @@
+body{
+    background-image: url("index_for_buttons.jpg");
+    background-repeat: no-repeat;
+
+    background-position: top;
+}
+
+#login{
+    margin-top: 260px;
+    margin-left: 948px;
+}
+
+#contests{
+    margin-top: 45px;
+    margin-left: 86px;
+}
+
+#register{
+    margin-top: 103px;
+    margin-left: 350px;
+}
+
+#leaderboard{
+    margin-top: -95px;
+    margin-left: 865px;
+}
+
+#logout{
+    margin-top: -218px;
+    margin-left: 915px;
+}
