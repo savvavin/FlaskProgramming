@@ -1,20 +1,75 @@
-body{
-    background-image: url("cat.jpg");
-
+/* Set margin and padding to 0 for the body element */
+body {
+  margin: 0;
+  padding: 0;
 }
 
-h1{
-    color: white;
+/* Style the header with a dark background and white text */
+header {
+  background-color: #343a40;
+  color: #fff;
+  padding: 10px 0;
 }
 
-h2{
-    color: white;
+/* Set the font and font size for the navbar links */
+.navbar-brand {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
 }
 
-p{
-    color: white;
+/* Style the main content container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-#main{
-    margin-left: 100px;
+/* Add spacing to the main heading */
+h1 {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+/* Add spacing to the paragraph elements */
+p {
+  margin-bottom: 20px;
+}
+
+/* Style the "Add Task" button */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Style the task cards */
+.card {
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the task card title */
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Style the task card text */
+.card-text {
+  margin-bottom: 10px;
+}
+
+/* Style the task card button group */
+.btn-group {
+  margin-right: 10px;
+}
+
+/* Style the task card button */
+.btn-success, .btn-primary, .btn-danger {
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+/* Add margin to the task card button group */
+.d-flex.justify-content-end {
+  margin-top: 10px;
 }

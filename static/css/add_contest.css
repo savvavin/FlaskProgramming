@@ -1,24 +1,22 @@
-body{
-    background-image: url("plit.jpg");
-
+body {
+    background-color: #f8f9fa;
 }
 
-h1{
-    margin-top: 50px;
-    color: white;
+.navbar-brand {
+    font-size: 20px;
 }
 
-h2{
-    margin-top: 50px;
-    color: white;
+.form-control {
+    border-radius: 0;
 }
 
-p{
-    margin-top: 50px;
-    color: white;
+.btn-primary {
+    border-radius: 0;
 }
 
-#main{
-    margin-top: 50px;
-    margin-left: 100px;
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

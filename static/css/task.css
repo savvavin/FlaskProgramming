@@ -1,24 +1,44 @@
-body{
-    background-image: url("panter.jpg");
-
+/* цвет фона */
+body {
+  background-color: #f8f9fa;
 }
 
-h1{
-    color: white;
+/* цвет текста */
+body, h1, h2, h3, p, a, button {
+  color: #212529;
 }
 
-h2{
-    color: white;
+/* стилизация кнопки */
+button {
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
-h3{
-    color: white;
+button:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
 }
 
-p{
-    color: white;
+/* выравнивание заголовков */
+h1, h2, h3 {
+  text-align: center;
 }
 
-#main{
-    margin-left: 50px;
+/* выравнивание формы */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* изменение отступа для формы */
+.container {
+  margin-top: 50px;
+}
+
+/* изменение ширины формы для мобильных устройств */
+@media (max-width: 576px) {
+  .container {
+    width: 90%;
+  }
 }

@@ -1,17 +1,45 @@
-body{
-    background-image: url("leaderboard.jpg");
-
-    background-position: top;
-}
-.table{
-    border: 2px solid black;
-    margin-left: 400px;
-    margin-top: 30px;
-    margin-right: 400px;
+.card {
+  width: 70%;
+  margin: 0 auto;
 }
 
-#title{
-    margin-left: 550px;
-    margin-top: -10px;
-    color: #ffffff;
+.card-title {
+  font-size: 24px;
+}
+
+.card-text {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.navbar-brand {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.navbar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 800px;
+}
+
+#title {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
 }

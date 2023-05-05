@@ -1,5 +1,76 @@
-body{
-    background-image: url("register.jpg");
+body {
+    background-color: #343a40;
+}
 
-    background-position: top;
+header.navbar {
+    padding: 0;
+}
+
+header .navbar-brand {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+header .navbar-brand:hover {
+    color: #fff;
+}
+
+header .navbar-brand:focus {
+    color: #fff;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.form-group label {
+    color: #fff;
+    display: block;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    background-color: #484d52;
+    border: none;
+    color: #fff;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #ffc107;
+}
+
+.form-group .form-check {
+    margin-top: 1rem;
+}
+
+.form-check label {
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #343a40;
+}
+
+.btn-primary:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+    color: #343a40;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+.text-white {
+    color: #fff;
 }
