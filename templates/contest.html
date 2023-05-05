@@ -2,46 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<link href = "/static/css/contest.css" rel = "stylesheet" type="text/css" media="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{title}}</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	      crossorigin="anonymous">
+
 </head>
 <body>
-<header>
-    <nav>
-        {% if current_user.is_authenticated %}
-        <a style="color: white; text-decoration: none; font-size: 20px" href="/user/{{ current_user.id }}">{{ current_user.name }}</a>
-        {% else %}
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/register">Зарегистрироваться</a>
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/login">Войти</a>
-        {% endif %}
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/">Главная страница</a>
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/solutions">Решения</a>
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/logout">Выйти</a>
-    </nav>
-</header>
-<div id="main">
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+    <a class="navbar-brand" href="/">Главная страница</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            {% if current_user.is_authenticated %}
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="/user/{{ current_user.id }}">{{ current_user.name }}</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/register">Зарегистрироваться</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/login">Войти</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/solutions">Решения</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/logout">Выйти</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container my-5">
 	<h1>{{ contest.title }}</h1>
 	<p>{{ contest.description }}</p>
-	<a href="/contests/{{ contest.id }}/add_task">Добавить задачу</a>
+	<a href="/contests/{{ contest.id }}/add_task" class="btn btn-primary my-3">Добавить задачу</a>
     {% for item in tasks %}
-    <div>
-        <h2>{{item.id}}. {{item.title}}</h2>
-        <div>
-            <p>Автор - {{item.user.name}}, Дата написания - {{item.created_date}}</p>
+    <div class="card my-3">
+        <div class="card-body">
+            <h2 class="card-title">{{item.id}}. {{item.title}}</h2>
+            <p class="card-text">Автор - {{item.user.name}}, Дата написания - {{item.created_date}}</p>
+            {% if current_user.is_authenticated %}
+            <div class="d-flex justify-content-end">
+                <a href="/contests/{{ contest.id }}/tasks/{{ item.id }}" class="btn btn-success mx-1">
+                    Открыть
+                </a>
+                <a href="/contests/{{ contest.id }}/edit_task/{{ item.id }}" class="btn btn-primary mx-1">
+                    Редактировать
+                </a>
+                <a href="/contests/{{ contest.id }}/tasks_delete/{{ item.id }}" class="btn btn-danger mx-1">
+                    Удалить
+                </a>
+            </div>
+            {% endif %}
         </div>
-        {% if current_user.is_authenticated %}
-        <div>
-            <a href="/contests/{{ contest.id }}/tasks/{{ item.id }}">
-                Открыть
-            </a>
-            <a href="/contests/{{ contest.id }}/edit_task/{{ item.id }}">
-                Редактировать
-            </a>
-            <a href="/contests/{{ contest.id }}/tasks_delete/{{ item.id }}">
-                Удалить
-            </a>
-        </div>
-        {% endif %}
     </div>
     {% endfor %}
 </div>

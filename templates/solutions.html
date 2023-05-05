@@ -2,49 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<link href = "/static/css/solutions.css" rel = "stylesheet" type="text/css" media="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{title}}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+
 </head>
 <body>
     <header>
-        <nav>
-        {% if current_user.is_authenticated %}
-        <a style="color: white; text-decoration: none; font-size: 20px" href="/user/{{ current_user.id }}">{{ current_user.name }}</a>
-        {% else %}
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/register">Зарегистрироваться</a>
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/login">Войти</a>
-        {% endif %}
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/">Главная страница</a>
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/solutions">Решения</a>
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/logout">Выйти</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">Главная страница</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/{{ current_user.id }}">{{ current_user.name }}</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Зарегистрироваться</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Войти</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/solutions">Решения</a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Выйти</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
         </nav>
     </header>
-<div id="main">
-<h1>Решения</h1>
-
-{% for solution in solutions %}
-<div>
-    <h2>{{solution.id}}</h2>
-    <div>
-        <p>Вердикт - {{solution.verdict}}, Дата сдачи - {{solution.created_date}}</p>
-    </div>
-    {% if current_user.is_authenticated %}
-    <div>
-        {% for i in spis %}
-            {% if solution.task_id == i.id %}
-            <a href="/contests/{{ i.contest_id }}/tasks/{{ solution.task_id }}">
-                Задача
-            </a>
-            <a href="/solutions/{{ solution.id }}">
-                Открыть
-            </a>
-            {% endif %}
+    <div class="container my-5">
+        <h1 class="text-center mb-5">Решения</h1>
+        {% for solution in solutions %}
+        <div class="card my-3">
+            <div class="card-header">
+                <h2 class="card-title">{{ solution.id }}</h2>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Вердикт - {{ solution.verdict }}, Дата сдачи - {{ solution.created_date }}</p>
+                {% if current_user.is_authenticated %}
+                <div class="btn-group" role="group">
+                    {% for i in spis %}
+                    {% if solution.task_id == i.id %}
+                    <a href="/contests/{{ i.contest_id }}/tasks/{{ solution.task_id }}" class="btn btn-secondary">Задача</a>
+                    <a href="/solutions/{{ solution.id }}" class="btn btn-primary">Открыть</a>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
         {% endfor %}
-
     </div>
-{% endif %}
-</div>
-{% endfor %}
-</div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 </body>
 </html>

@@ -2,45 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<link href = "/static/css/contests.css" rel = "stylesheet" type="text/css" media="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{title}}</title>
+    <!-- Подключаем стили Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
 </head>
 <body>
-<header>
-    <nav>
-        {% if current_user.is_authenticated %}
-        <a style="color: white; text-decoration: none; font-size: 20px" href="/user/{{ current_user.id }}">{{ current_user.name }}</a>
-        {% else %}
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/register">Зарегистрироваться</a>
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/login">Войти</a>
-        {% endif %}
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/">Главная страница</a>
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/solutions">Решения</a>
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/logout">Выйти</a>
-    </nav>
-</header>
-<h1 style="color: white; margin-left: 100px">Контесты</h1>
-<a style="margin-left: 100px" href="/add_contest">Добавить контест</a>
-{% for item in contests %}
-<div id="main">
-    <h2>{{item.id}}. {{item.title}}</h2>
-    <div>
-        <p>Дата создания - {{item.created_date}}</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+    <a class="navbar-brand" href="/">Главная страница</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            {% if current_user.is_authenticated %}
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="/user/{{ current_user.id }}">{{ current_user.name }}</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/register">Зарегистрироваться</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/login">Войти</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/solutions">Решения</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/logout">Выйти</a>
+            </li>
+        </ul>
     </div>
-    {% if current_user.is_authenticated %}
-    <div>
-        <a href="/contests/{{ item.id }}">
-            Открыть
-        </a>
-        <a href="/edit_contest/{{ item.id }}">
-            Редактировать
-        </a>
-        <a href="/contests_delete/{{ item.id }}">
-            Удалить
-        </a>
+</nav>
+<div class="container mt-5">
+    <h1 class="text-black mb-5">Контесты</h1>
+    <a href="/add_contest" class="btn btn-warning mb-5">Добавить контест</a>
+    {% for item in contests %}
+    <div class="card mb-3">
+        <div class="card-header">
+            <h5 class="card-title">{{item.id}}. {{item.title}}</h5>
+        </div>
+        <div class="card-body">
+            <p class="card-text">Дата создания - {{item.created_date}}</p>
+            {% if current_user.is_authenticated %}
+            <div>
+                <a href="/contests/{{ item.id }}" class="btn btn-primary">
+                    Открыть
+                </a>
+                <a href="/edit_contest/{{ item.id }}" class="btn btn-success">
+                    Редактировать
+                </a>
+                <a href="/contests_delete/{{ item.id }}" class="btn btn-danger">
+                    Удалить
+                </a>
+            </div>
+            {% endif %}
+        </div>
     </div>
-    {% endif %}
+    {% endfor %}
 </div>
-{% endfor %}
 </body>
 </html>

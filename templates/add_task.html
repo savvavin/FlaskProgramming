@@ -1,94 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link href="/static/css/add_contest.css" rel="stylesheet" type="text/css" media="all">
-    <title>{{title}}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{title}}</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-<header>
-    <nav>
-        {% if current_user.is_authenticated %}
-        <a style="color: white; text-decoration: none; font-size: 20px" href="/user/{{ current_user.id }}">{{
-            current_user.name }}</a>
-        {% else %}
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/register">Зарегистрироваться</a>
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/login">Войти</a>
-        {% endif %}
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/">Главная страница</a>
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/solutions">Решения</a>
-        <a style="color: white; text-decoration: none; font-size: 20px; margin-left: 10px" href="/logout">Выйти</a>
-    </nav>
-</header>
-<div id="main">
-    <h1>Добавление задачи</h1>
-    <form action="" method="post" enctype="multipart/form-data">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.title.label }}<br>
-            {{ form.title() }}<br>
-            {% for error in form.title.errors %}
-        <p>
-            {{ error }}
-        </p>
-        {% endfor %}
-        </p>
-        <p>
-            {{ form.description.label }}<br>
-            {{ form.description() }}<br>
-            {% for error in form.description.errors %}
-        <p>
-            {{ error }}
-        </p>
-        {% endfor %}
-        </p>
-        <p>
-            {{ form.input_format.label }}<br>
-            {{ form.input_format() }}<br>
-            {% for error in form.input_format.errors %}
-        <p>
-            {{ error }}
-        </p>
-        {% endfor %}
-        </p>
-        <p>
-            {{ form.output_format.label }}<br>
-            {{ form.output_format() }}<br>
-            {% for error in form.output_format.errors %}
-        <p>
-            {{ error }}
-        </p>
-        {% endfor %}
-        </p>
-        <p>
-            {{ form.input_example.label }}<br>
-            {{ form.input_example() }}<br>
-            {% for error in form.input_example.errors %}
-        <p>
-            {{ error }}
-        </p>
-        {% endfor %}
-        </p>
-        <p>
-            {{ form.output_example.label }}<br>
-            {{ form.output_example() }}<br>
-            {% for error in form.output_example.errors %}
-        <p>
-            {{ error }}
-        </p>
-        {% endfor %}
-        </p>
-
-
-        <div>
-            <input type="file" name="file">
-        </div>
-
-
-        <p>{{ form.submit(type="submit") }}</p>
-
-        {{message}}
-    </form>
-</div>
+	<div class="container mt-4">
+		<h1 class="text-center">Добавление задачи</h1>
+		<form action="" method="post" enctype="multipart/form-data">
+			{{ form.hidden_tag() }}
+			<div class="form-group">
+				{{ form.title.label }}
+				{{ form.title(class="form-control") }}
+				{% for error in form.title.errors %}
+				<small class="text-danger">{{ error }}</small>
+				{% endfor %}
+			</div>
+			<div class="form-group">
+				{{ form.description.label }}
+				{{ form.description(class="form-control") }}
+				{% for error in form.description.errors %}
+				<small class="text-danger">{{ error }}</small>
+				{% endfor %}
+			</div>
+			<div class="form-group">
+				{{ form.input_format.label }}
+				{{ form.input_format(class="form-control") }}
+				{% for error in form.input_format.errors %}
+				<small class="text-danger">{{ error }}</small>
+				{% endfor %}
+			</div>
+			<div class="form-group">
+				{{ form.output_format.label }}
+				{{ form.output_format(class="form-control") }}
+				{% for error in form.output_format.errors %}
+				<small class="text-danger">{{ error }}</small>
+				{% endfor %}
+			</div>
+			<div class="form-group">
+				{{ form.input_example.label }}
+				{{ form.input_example(class="form-control") }}
+				{% for error in form.input_example.errors %}
+				<small class="text-danger">{{ error }}</small>
+				{% endfor %}
+			</div>
+			<div class="form-group">
+				{{ form.output_example.label }}
+				{{ form.output_example(class="form-control") }}
+				{% for error in form.output_example.errors %}
+				<small class="text-danger">{{ error }}</small>
+				{% endfor %}
+			</div>
+			<div class="form-group">
+				<input type="file" name="file" class="form-control-file">
+			</div>
+			<div class="form-group">
+				{{ form.submit(type="submit", class="btn btn-primary") }}
+			</div>
+			{{message}}
+		</form>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
