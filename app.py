@@ -22,6 +22,7 @@ def index():
     db_sess = db_session.create_session()
     task = db_sess.query(Tasks)
     task = task[::-1]
+    print(task)
     try:
         counter = task[0].id + 1
     except IndexError:
@@ -292,6 +293,8 @@ def tasks_delete(id1, id):
     if tasks:
         db_sess.delete(tasks)
         db_sess.commit()
+        global counter
+        counter -= 1
     else:
         abort(404)
     return redirect(f'/contests/{id1}')
